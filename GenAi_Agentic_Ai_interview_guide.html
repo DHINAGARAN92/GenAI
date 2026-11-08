@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GenAI & Agentic AI — Interview Preparation Guide</title>
+<style>
+:root{
+  --ink:#172033;--muted:#64748b;--paper:#f5f7fb;--card:#fff;--line:#e2e8f0;
+  --blue:#2563eb;--cyan:#0891b2;--violet:#7c3aed;--green:#059669;
+  --amber:#d97706;--rose:#e11d48;--navy:#101a31;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.hero{background:radial-gradient(circle at 80% 10%,#334d83 0,transparent 35%),linear-gradient(135deg,#101a31,#1c2d50 65%,#243b63);color:#fff;padding:54px 24px 44px}
+.hero-inner,.layout,.footer-inner{max-width:1180px;margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800;color:#a5d8ff}
+h1{font-size:clamp(34px,5vw,58px);line-height:1.05;max-width:850px;margin:14px 0}
+.hero p{color:#dbeafe;max-width:760px;font-size:17px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+.pill{border:1px solid #ffffff45;background:#ffffff12;border-radius:999px;padding:6px 12px;font-size:12px;color:#eaf4ff}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;padding:28px 20px 60px}
+.sidebar{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.sidebar h3{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 10px}
+.sidebar a{display:block;padding:7px 9px;border-radius:8px;color:#334155;font-size:13px}
+.sidebar a:hover{background:#eff6ff;text-decoration:none;color:var(--blue)}
+.search{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:15px;font:inherit}
+main{min-width:0}
+.intro-card,.section,.callout{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:22px;box-shadow:0 5px 18px #0f172a08}
+.intro-card{border-top:4px solid var(--blue)}
+h2{font-size:26px;line-height:1.2;margin:0 0 12px}
+h3{font-size:18px;margin:22px 0 8px}
+h4{font-size:14px;margin:0 0 7px}
+.lead{font-size:16px;color:#475569}
+.section-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+.num{flex:0 0 42px;height:42px;border-radius:13px;background:#eaf2ff;color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:17px}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:var(--muted)}
+.definition{background:#f8fafc;border-left:4px solid var(--blue);padding:13px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:14px 0}
+.mini{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff}
+.mini p{margin:5px 0 0;color:#526174;font-size:13px}
+.mini.blue{background:#eff6ff;border-color:#bfdbfe}.mini.green{background:#ecfdf5;border-color:#a7f3d0}
+.mini.violet{background:#f5f3ff;border-color:#ddd6fe}.mini.amber{background:#fffbeb;border-color:#fde68a}
+.diagram{background:#f8fafc;border:1px solid var(--line);border-radius:15px;padding:18px;margin:16px 0;overflow-x:auto}
+.flow{display:flex;align-items:stretch;justify-content:center;gap:8px;min-width:600px}
+.node{flex:1;min-width:100px;border:1px solid #cbd5e1;background:#fff;border-radius:11px;padding:12px 9px;text-align:center;font-weight:750;font-size:12px}
+.node small{display:block;font-weight:450;color:var(--muted);margin-top:4px}
+.node.primary{background:#eff6ff;border-color:#93c5fd;color:#1d4ed8}
+.node.success{background:#ecfdf5;border-color:#86efac;color:#047857}
+.node.purple{background:#f5f3ff;border-color:#c4b5fd;color:#6d28d9}
+.arrow{align-self:center;color:#94a3b8;font-size:21px;font-weight:800}
+.stack{display:flex;flex-direction:column;align-items:center;gap:7px}
+.stack .node{width:min(100%,620px);flex:none}
+.down{color:#94a3b8;font-size:20px;line-height:1}
+.branch{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(100%,620px)}
+.branch .node{min-width:0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th,td{text-align:left;padding:10px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f1f5f9;color:#334155;font-size:12px}
+tr:last-child td{border-bottom:0}
+ul,ol{padding-left:22px}
+li{margin:5px 0}
+.qa{border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
+.q{background:#f8fafc;padding:11px 14px;font-weight:800}
+.a{padding:12px 14px;color:#475569}
+.tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;padding:4px 8px;border-radius:99px;background:#e0f2fe;color:#075985;margin-bottom:8px}
+.callout{background:#101a31;color:#fff;border:0}
+.callout p{color:#dbeafe}
+.callout strong{color:#93c5fd}
+.code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#111827;color:#e5e7eb;padding:14px;border-radius:10px;overflow:auto;font-size:12px}
+.metric{font-size:25px;font-weight:900;color:var(--blue)}
+.checklist label{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.checklist input{margin-top:5px;accent-color:var(--green)}
+.footer{background:#101a31;color:#cbd5e1;padding:26px 20px;font-size:12px}
+.hide{display:none!important}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none}.grid{grid-template-columns:1fr}.hero{padding-top:38px}.section{padding:18px}}
+@media print{.sidebar,.search{display:none}.layout{display:block;padding:0}.hero{background:#172033!important;print-color-adjust:exact}.section,.intro-card{break-inside:avoid;box-shadow:none}.diagram{break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="hero">
+ <div class="hero-inner">
+  <div class="eyebrow">Interview workbook • Architecture • Practical understanding</div>
+  <h1>GenAI & Agentic AI</h1>
+  <p>A visual, interview-focused guide to LLMs, RAG, vector search, tools, agents, LangChain, LangGraph, LangSmith, MCP, guardrails and production architecture.</p>
+  <div class="hero-tags"><span class="pill">LLM fundamentals</span><span class="pill">RAG & retrieval</span><span class="pill">Agentic AI</span><span class="pill">Frameworks & MCP</span><span class="pill">Enterprise architecture</span></div>
+ </div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+ <input class="search" id="search" placeholder="Search topics..." aria-label="Search topics">
+ <h3>Contents</h3>
+ <nav id="nav">
+ <a href="#llm">01 · LLM fundamentals</a><a href="#tokens">02 · Tokens & context</a><a href="#temperature">03 · Temperature</a><a href="#embeddings">04 · Embeddings</a>
+ <a href="#rag">05 · RAG</a><a href="#ragtypes">06 · Types of RAG</a><a href="#chunking">07 · Chunking</a><a href="#pinecone">08 · Pinecone</a><a href="#topk">09 · Top-K search</a><a href="#rerank">10 · Reranking</a><a href="#hybrid">11 · Hybrid search</a>
+ <a href="#tavily">12 · Tavily</a><a href="#tools">13 · Tool calling</a><a href="#mcp">14 · MCP</a><a href="#langchain">15 · LangChain</a><a href="#langgraph">16 · LangGraph</a><a href="#langsmith">17 · LangSmith</a><a href="#multiagent">18 · Multi-agent</a><a href="#guardrails">19 · Guardrails</a><a href="#evals">20 · Evals</a><a href="#multi-llm">21 · Multi-LLM</a><a href="#comparison">22 · Framework comparison</a><a href="#enterprise">23 · Enterprise architecture</a><a href="#checklist">Revision checklist</a>
+ </nav>
+</aside>
+<main id="content">
+<section class="intro-card">
+ <span class="tag">How to use this guide</span>
+ <h2>Prepare at three levels</h2>
+ <div class="grid">
+  <div class="mini blue"><div class="metric">01</div><h4>Explain</h4><p>Define the concept in 60–90 seconds using clear language.</p></div>
+  <div class="mini green"><div class="metric">02</div><h4>Implement</h4><p>Describe the workflow and write a small Python example.</p></div>
+  <div class="mini violet"><div class="metric">03</div><h4>Architect</h4><p>Explain enterprise integration, security, scalability and trade-offs.</p></div>
+  <div class="mini amber"><div class="metric">04</div><h4>Evaluate</h4><p>Explain how you measure accuracy, relevance, latency and cost.</p></div>
+ </div>
+ <p class="lead">Interview tip: Avoid memorizing definitions alone. For every topic, explain what problem it solves, how it works, when you would use it and what its limitations are.</p>
+</section>
+
+<section class="section topic" id="llm">
+ <div class="section-head"><div class="num">01</div><div><div class="kicker">Foundation</div><h2>LLM – Large Language Model</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> An LLM is a machine-learning model trained on large datasets to understand and generate language. Most modern LLMs use Transformer-based architectures and generate text by predicting tokens based on context.</div>
+ <div class="diagram"><div class="flow"><div class="node">Input text<small>User prompt</small></div><div class="arrow">→</div><div class="node primary">Tokenization<small>Text → tokens</small></div><div class="arrow">→</div><div class="node purple">Transformer<small>Attention & layers</small></div><div class="arrow">→</div><div class="node success">Output<small>Generated tokens</small></div></div></div>
+ <h3>Key concepts</h3><table><tr><th>Concept</th><th>Meaning</th></tr><tr><td>Token</td><td>A unit of text processed by the model; it may be a word, part of a word or punctuation.</td></tr><tr><td>Transformer</td><td>Neural-network architecture used by many modern language models.</td></tr><tr><td>Attention</td><td>Mechanism that helps the model weigh relationships between tokens.</td></tr><tr><td>Inference</td><td>Using a trained model to generate a prediction or response.</td></tr><tr><td>Embedding</td><td>Numerical vector representation of information.</td></tr></table>
+ <div class="qa"><div class="q">Q: What is the difference between Generative AI and an LLM?</div><div class="a">Generative AI is the broader category of systems that generate content such as text, images, audio or video. An LLM is a type of model focused primarily on language tasks.</div></div>
+ <div class="qa"><div class="q">Q: Does an LLM search the internet by default?</div><div class="a">No. It generates from its learned parameters and the context supplied to it. Current external information requires an integrated search or data-retrieval capability.</div></div>
+ <p><b>Examples:</b> GPT, Gemini, Claude and Llama model families.</p>
+</section>
+
+<section class="section topic" id="tokens">
+ <div class="section-head"><div class="num">02</div><div><div class="kicker">Context management</div><h2>Tokens & Context Window</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Tokens are the units of text a model processes. The context window is the maximum amount of input and output token context the model supports for a request or conversation.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">Model context budget</div><div class="down">↓</div>
+  <div class="branch"><div class="node">System instructions<small>Rules and role</small></div><div class="node">Conversation history<small>Previous turns</small></div></div>
+  <div class="branch"><div class="node">Retrieved RAG chunks<small>External knowledge</small></div><div class="node">Current question<small>User request</small></div></div>
+  <div class="down">↓</div><div class="node success">Available generation budget<small>Response tokens must also fit within model limits</small></div>
+ </div></div>
+ <h3>How do you manage context-window limitations?</h3><ul><li>Retrieve only relevant document chunks rather than entire documents.</li><li>Limit or summarize older conversation history.</li><li>Use Top-K retrieval and reranking.</li><li>Remove duplicated or irrelevant context.</li><li>Track token usage and reserve space for the answer.</li></ul>
+ <div class="qa"><div class="q">Q: Does Pinecone increase the context window?</div><div class="a">No. Pinecone stores external vectors and retrieves relevant content. The retrieved content still has to fit within the LLM's context limit.</div></div>
+</section>
+
+<section class="section topic" id="temperature">
+ <div class="section-head"><div class="num">03</div><div><div class="kicker">Generation control</div><h2>Temperature</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Temperature controls the randomness of token sampling during generation. Lower values generally produce more predictable output; higher values generally produce more varied output.</div>
+ <div class="grid">
+  <div class="mini blue"><h4>Low temperature</h4><div class="metric">0.0–0.2</div><p>Often useful for extraction, classification and constrained responses.</p></div>
+  <div class="mini violet"><h4>Moderate temperature</h4><div class="metric">0.3–0.7</div><p>Often useful for general explanations and conversational responses.</p></div>
+  <div class="mini amber"><h4>Higher temperature</h4><div class="metric">0.8+</div><p>Can produce more varied or creative responses.</p></div>
+ </div>
+ <p class="lead">These are indicative ranges, not universal settings. Supported values and effects vary by model.</p>
+ <div class="qa"><div class="q">Q: Does temperature improve model intelligence or factual accuracy?</div><div class="a">No. It changes sampling behaviour. Factual accuracy depends on the model, prompt, evidence, retrieval quality and validation.</div></div>
+</section>
+
+<section class="section topic" id="embeddings">
+ <div class="section-head"><div class="num">04</div><div><div class="kicker">Semantic representation</div><h2>Embeddings</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Embeddings convert text or other supported data into numerical vectors that capture useful semantic or representational information. Similar meanings often have vectors that are close in the embedding space.</div>
+ <div class="diagram"><div class="flow"><div class="node">Text<small>"Invoice automation"</small></div><div class="arrow">→</div><div class="node primary">Embedding model</div><div class="arrow">→</div><div class="node purple">Vector<small>[0.12, -0.08, …]</small></div><div class="arrow">→</div><div class="node success">Similarity search</div></div></div>
+ <h3>Where are embeddings used?</h3><div class="grid"><div class="mini">Semantic search</div><div class="mini">RAG retrieval</div><div class="mini">Recommendations</div><div class="mini">Clustering and duplicate detection</div></div>
+ <div class="qa"><div class="q">Q: LLM vs embedding model?</div><div class="a">An LLM generates or interprets language. An embedding model maps content into vectors used for similarity search and other downstream tasks.</div></div>
+</section>
+
+<section class="section topic" id="rag">
+ <div class="section-head"><div class="num">05</div><div><div class="kicker">Knowledge grounding</div><h2>RAG – Retrieval-Augmented Generation</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> RAG combines information retrieval with LLM generation. It retrieves relevant information from an external knowledge source and provides it to the LLM as context before generating an answer.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">Document ingestion<small>PDF, Word, HTML, database</small></div><div class="down">↓</div>
+  <div class="node">Extract text → split into chunks</div><div class="down">↓</div>
+  <div class="node purple">Generate embeddings</div><div class="down">↓</div>
+  <div class="node success">Vector store / search index</div>
+  <div style="height:10px"></div>
+  <div class="node primary">User question → query embedding</div><div class="down">↓</div>
+  <div class="node">Retrieve relevant chunks</div><div class="down">↓</div>
+  <div class="node purple">Context + question → LLM</div><div class="down">↓</div>
+  <div class="node success">Grounded answer + sources</div>
+ </div></div>
+ <h3>Why use RAG?</h3><ul><li>Answer using private or domain-specific information.</li><li>Update knowledge without retraining the LLM.</li><li>Provide traceable source references.</li><li>Reduce unsupported answers when retrieval and prompting are well designed.</li></ul>
+ <div class="qa"><div class="q">Q: RAG vs fine-tuning?</div><div class="a">RAG supplies external knowledge at inference time and is useful when information changes or must remain source-grounded. Fine-tuning changes model behaviour or task performance through training. They can be combined.</div></div>
+</section>
+
+<section class="section topic" id="ragtypes">
+ <div class="section-head"><div class="num">06</div><div><div class="kicker">Retrieval strategies</div><h2>Different Types of RAG</h2></div></div>
+ <table><tr><th>Type</th><th>How it works</th><th>Example</th></tr>
+ <tr><td>Naive RAG</td><td>Basic retrieve-and-generate pipeline.</td><td>Search PDF chunks and answer.</td></tr>
+ <tr><td>Advanced RAG</td><td>Adds query rewriting, filtering, hybrid retrieval and reranking.</td><td>Enterprise knowledge assistant.</td></tr>
+ <tr><td>Modular RAG</td><td>Composes interchangeable retrieval and generation modules.</td><td>Multiple retrieval routes.</td></tr>
+ <tr><td>Hybrid RAG</td><td>Combines keyword and semantic vector search.</td><td>Exact invoice ID plus semantic policy search.</td></tr>
+ <tr><td>Graph RAG</td><td>Uses entities and relationships in a knowledge graph.</td><td>Find relationships across departments and systems.</td></tr>
+ <tr><td>Agentic RAG</td><td>An agent decides when, where and how to retrieve, potentially iterating.</td><td>Research assistant using several sources.</td></tr></table>
+ <div class="qa"><div class="q">Q: Naive RAG vs Agentic RAG?</div><div class="a">Naive RAG generally follows a fixed retrieval pipeline. Agentic RAG uses an agent to choose retrieval strategies or sources and can perform multiple retrieval steps based on intermediate results.</div></div>
+</section>
+
+<section class="section topic" id="chunking">
+ <div class="section-head"><div class="num">07</div><div><div class="kicker">Document preparation</div><h2>Chunking & Overlap</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Chunking divides large documents into smaller sections so they can be embedded, indexed and retrieved independently.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">Original document</div><div class="down">↓</div>
+  <div class="branch"><div class="node">Chunk 1<small>Sections 1–3</small></div><div class="node">Chunk 2<small>Sections 3–5</small></div></div>
+  <div class="branch"><div class="node">Chunk 3<small>Sections 5–7</small></div><div class="node">Chunk 4<small>Sections 7–9</small></div></div>
+  <p style="color:#64748b;font-size:12px">Overlapping sections preserve some context across chunk boundaries.</p>
+ </div></div>
+ <table><tr><th>Strategy</th><th>Use</th></tr><tr><td>Fixed-size</td><td>Simple predictable chunk lengths.</td></tr><tr><td>Recursive</td><td>Split by paragraph, sentence and other separators.</td></tr><tr><td>Sentence-based</td><td>Keep sentence boundaries where possible.</td></tr><tr><td>Semantic</td><td>Split based on changes in meaning.</td></tr><tr><td>Structure-aware</td><td>Respect headings, tables and document sections.</td></tr></table>
+ <div class="qa"><div class="q">Q: What happens if chunks are too large or too small?</div><div class="a">Large chunks may contain irrelevant material and consume more context. Small chunks can lose surrounding meaning. Tune chunk size and overlap with retrieval evaluations.</div></div>
+</section>
+
+<section class="section topic" id="pinecone">
+ <div class="section-head"><div class="num">08</div><div><div class="kicker">Vector infrastructure</div><h2>Pinecone – Managed Vector Database</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Pinecone is a managed cloud vector database used to store, index and retrieve embeddings with associated metadata.</div>
+ <div class="diagram"><div class="flow"><div class="node">Documents</div><div class="arrow">→</div><div class="node primary">Embedding model</div><div class="arrow">→</div><div class="node purple">Pinecone index<small>Vectors + metadata</small></div><div class="arrow">→</div><div class="node success">Similarity query</div></div></div>
+ <table><tr><th>Term</th><th>Meaning</th></tr><tr><td>Index</td><td>Vector search structure.</td></tr><tr><td>Vector</td><td>Numerical embedding.</td></tr><tr><td>Namespace</td><td>Logical partition within an index.</td></tr><tr><td>Metadata</td><td>Additional attributes such as source, page, tenant or document type.</td></tr><tr><td>Upsert</td><td>Insert or update vectors.</td></tr><tr><td>Query</td><td>Search for similar vectors.</td></tr></table>
+ <div class="qa"><div class="q">Q: Pinecone vs context window?</div><div class="a">Pinecone is external storage and retrieval infrastructure. The LLM context window is the model's working token capacity. Pinecone helps select relevant information; it does not expand that capacity.</div></div>
+ <p><b>Design note:</b> Enforce tenant and document-level authorization in retrieval filters and application policy. A namespace alone should not be treated as the complete security boundary.</p>
+</section>
+
+<section class="section topic" id="topk">
+ <div class="section-head"><div class="num">09</div><div><div class="kicker">Candidate retrieval</div><h2>Top-K Search</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Top-K search returns the K highest-ranked candidates from a retrieval operation, such as the most similar chunks for a query embedding.</div>
+ <div class="grid"><div class="mini blue"><h4>K = 1</h4><p>One candidate. Focused but may miss supporting context.</p></div><div class="mini green"><h4>K = 3–5</h4><p>Small candidate set, often a useful starting experiment.</p></div><div class="mini violet"><h4>K = 10+</h4><p>More coverage, but may include irrelevant material and increase cost.</p></div><div class="mini amber"><h4>Tune empirically</h4><p>Use evaluation data, query types and context budget.</p></div></div>
+ <div class="qa"><div class="q">Q: How do you choose K?</div><div class="a">Evaluate retrieval precision and recall, chunk size, query complexity, context budget, latency and downstream answer quality. K should be tuned, not selected by a universal rule.</div></div>
+</section>
+
+<section class="section topic" id="rerank">
+ <div class="section-head"><div class="num">10</div><div><div class="kicker">Retrieval refinement</div><h2>Reranking</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Reranking is a second-stage process that reorders retrieved candidates based on their relevance to the specific query.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">User query</div><div class="down">↓</div>
+  <div class="node">Vector / hybrid search retrieves top 20 candidates</div><div class="down">↓</div>
+  <div class="node purple">Reranker scores query-document relevance</div><div class="down">↓</div>
+  <div class="node success">Best 3–5 chunks sent to LLM</div>
+ </div></div>
+ <table><tr><th>Vector search</th><th>Reranking</th></tr><tr><td>Initial candidate retrieval.</td><td>Second-stage refinement.</td></tr><tr><td>Often uses embedding similarity.</td><td>Often uses cross-encoder relevance scoring.</td></tr><tr><td>Efficient for broad search.</td><td>More computationally expensive per candidate.</td></tr></table>
+ <p><b>Examples:</b> Cohere Rerank, BGE Reranker and cross-encoder models.</p>
+ <div class="qa"><div class="q">Q: Why rerank if vector search already ranks results?</div><div class="a">Initial vector ranking is a fast candidate retrieval step. A reranker can compare each candidate more directly with the query and improve the ordering of context passed to the LLM.</div></div>
+</section>
+
+<section class="section topic" id="hybrid">
+ <div class="section-head"><div class="num">11</div><div><div class="kicker">Combined retrieval</div><h2>Hybrid Search</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Hybrid search combines lexical or keyword retrieval with semantic vector retrieval, then merges or reranks the results.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">User query</div><div class="down">↓</div>
+  <div class="branch"><div class="node">Keyword search<small>Exact terms, IDs, names</small></div><div class="node purple">Vector search<small>Semantic meaning</small></div></div>
+  <div class="down">↓</div><div class="node success">Fusion / reranking</div><div class="down">↓</div><div class="node">Relevant context for LLM</div>
+ </div></div>
+ <div class="qa"><div class="q">Q: When is hybrid search useful?</div><div class="a">When a question contains exact identifiers, product codes, names or technical terms as well as natural-language meaning. Keyword search can find exact matches while vector search finds semantically related content.</div></div>
+</section>
+
+<section class="section topic" id="tavily">
+ <div class="section-head"><div class="num">12</div><div><div class="kicker">External information</div><h2>Tavily – Web Search API</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Tavily is an AI-focused web search API that allows an application or agent to retrieve relevant information from the public internet.</div>
+ <div class="diagram"><div class="flow"><div class="node">User asks current question</div><div class="arrow">→</div><div class="node primary">Agent decides web search</div><div class="arrow">→</div><div class="node purple">Tavily API</div><div class="arrow">→</div><div class="node success">Results + sources</div></div></div>
+ <table><tr><th>RAG</th><th>Tavily</th></tr><tr><td>Searches an indexed knowledge collection.</td><td>Searches the web.</td></tr><tr><td>Useful for internal policies and private documents.</td><td>Useful for current external information.</td></tr><tr><td>Retrieves stored chunks.</td><td>Returns web search results and content.</td></tr></table>
+ <div class="qa"><div class="q">Q: Why combine Tavily and RAG?</div><div class="a">To let an assistant answer using both internal enterprise knowledge and external web information. Results must still be checked for freshness, credibility, relevance and permission.</div></div>
+</section>
+
+<section class="section topic" id="tools">
+ <div class="section-head"><div class="num">13</div><div><div class="kicker">Action execution</div><h2>Tool Calling & Agent Loops</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Tool calling lets an LLM request a predefined function or external capability. The application validates the request, executes the tool and returns the result to the model.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">User request</div><div class="down">↓</div><div class="node purple">LLM chooses tool and arguments</div><div class="down">↓</div><div class="node">Application validates tool name and arguments</div><div class="down">↓</div><div class="node success">Python function / API executes</div><div class="down">↓</div><div class="node">Tool result returned to LLM</div><div class="down">↓</div><div class="node primary">Final answer or another tool request</div>
+ </div></div>
+ <h3>Example tools</h3><div class="grid"><div class="mini">Calculator – deterministic arithmetic</div><div class="mini">Weather API – current weather</div><div class="mini">Database query – approved data retrieval</div><div class="mini">File search – locate allowed documents</div></div>
+ <div class="qa"><div class="q">Q: Tool calling vs agent?</div><div class="a">Tool calling is the mechanism for requesting external functions. An agent uses reasoning, tool selection, execution, observation and repeated decisions to complete a task.</div></div>
+ <div class="qa"><div class="q">Q: Does the LLM execute Python code directly?</div><div class="a">No. The LLM requests a tool call. The host application validates and executes the mapped function. Never execute arbitrary model-generated code without strict isolation and controls.</div></div>
+</section>
+
+<section class="section topic" id="mcp">
+ <div class="section-head"><div class="num">14</div><div><div class="kicker">Integration protocol</div><h2>MCP – Model Context Protocol</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> MCP is an open protocol that standardizes how AI applications connect to external tools, resources and prompt templates.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">MCP Host<small>AI application</small></div><div class="down">↓</div>
+  <div class="node purple">MCP Client<small>Protocol communication</small></div><div class="down">↓</div>
+  <div class="node success">MCP Server<small>Exposes capabilities</small></div><div class="down">↓</div>
+  <div class="branch"><div class="node">Tools<small>Execute actions</small></div><div class="node">Resources<small>Provide data</small></div></div>
+  <div class="node">Prompts<small>Reusable prompt templates</small></div>
+ </div></div>
+ <table><tr><th>Primitive</th><th>Purpose</th><th>Example</th></tr><tr><td>Tools</td><td>Perform an action.</td><td>Create a ticket or query a service.</td></tr><tr><td>Resources</td><td>Expose contextual data.</td><td>Read an approved project document.</td></tr><tr><td>Prompts</td><td>Offer reusable prompt templates.</td><td>Code review instructions.</td></tr></table>
+ <div class="qa"><div class="q">Q: MCP vs traditional tool calling?</div><div class="a">Traditional tool calling often uses application-specific schemas and integrations. MCP standardizes how compatible clients discover and communicate with servers exposing tools and resources. An LLM can still use tool calling to select an MCP capability.</div></div>
+ <div class="qa"><div class="q">Q: Does MCP replace APIs or function calling?</div><div class="a">No. MCP is a protocol layer for integration. MCP servers may call APIs internally, and an LLM application may use function/tool calling to decide which MCP capability to invoke.</div></div>
+</section>
+
+<section class="section topic" id="langchain">
+ <div class="section-head"><div class="num">15</div><div><div class="kicker">Application framework</div><h2>LangChain</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> LangChain is a framework for building LLM-powered applications by connecting models, prompts, tools, retrievers, document loaders and other components.</div>
+ <div class="diagram"><div class="flow"><div class="node">Documents</div><div class="arrow">→</div><div class="node">Loader & splitter</div><div class="arrow">→</div><div class="node primary">Embeddings & vector store</div><div class="arrow">→</div><div class="node success">Retriever + LLM</div></div></div>
+ <table><tr><th>Component</th><th>Purpose</th></tr><tr><td>Chat models</td><td>Connect to LLM providers.</td></tr><tr><td>Prompt templates</td><td>Build reusable prompts.</td></tr><tr><td>Document loaders</td><td>Load PDFs, Word files, HTML and more.</td></tr><tr><td>Text splitters</td><td>Divide documents into chunks.</td></tr><tr><td>Embeddings</td><td>Convert text into vectors.</td></tr><tr><td>Vector stores</td><td>Store and search embeddings.</td></tr><tr><td>Retrievers</td><td>Fetch relevant content.</td></tr><tr><td>Tools</td><td>Connect external functions and services.</td></tr><tr><td>Output parsers</td><td>Structure model responses.</td></tr></table>
+ <div class="qa"><div class="q">Q: Why use LangChain instead of plain Python?</div><div class="a">LangChain provides reusable abstractions and integrations that can accelerate application development. Plain Python can be simpler for small workflows and gives direct control. Choose based on complexity and maintainability.</div></div>
+</section>
+
+<section class="section topic" id="langgraph">
+ <div class="section-head"><div class="num">16</div><div><div class="kicker">Workflow orchestration</div><h2>LangGraph</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> LangGraph is a framework for building stateful, controllable agent workflows using graph-based execution with nodes, edges and shared state.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">Start / User request</div><div class="down">↓</div><div class="node purple">Supervisor node</div><div class="down">↓</div>
+  <div class="branch"><div class="node">Research node<small>RAG / web</small></div><div class="node">Execution node<small>Tools / APIs</small></div></div>
+  <div class="down">↓</div><div class="node">Evaluator node</div><div class="down">↓</div><div class="node success">Conditional route<small>Approve, retry or human review</small></div><div class="down">↓</div><div class="node primary">Final response</div>
+ </div></div>
+ <table><tr><th>Concept</th><th>Meaning</th></tr><tr><td>State</td><td>Shared information maintained across the workflow.</td></tr><tr><td>Node</td><td>A function or processing step.</td></tr><tr><td>Edge</td><td>Connection or route between nodes.</td></tr><tr><td>Conditional edge</td><td>Chooses the next node based on state.</td></tr><tr><td>Checkpointing</td><td>Saves state so execution can resume.</td></tr><tr><td>Human-in-the-loop</td><td>Pauses for human review or approval.</td></tr></table>
+ <div class="qa"><div class="q">Q: LangGraph vs a simple Python loop?</div><div class="a">A Python loop is sufficient for simple agents. LangGraph adds structured state, graph routing, checkpointing, persistence and human approval patterns for more complex workflows.</div></div>
+</section>
+
+<section class="section topic" id="langsmith">
+ <div class="section-head"><div class="num">17</div><div><div class="kicker">Observability & evaluation</div><h2>LangSmith</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> LangSmith is a platform for tracing, debugging, monitoring and evaluating LLM applications and agent workflows.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">User request</div><div class="down">↓</div><div class="node">LLM call → tool call → retrieval → response</div><div class="down">↓</div><div class="node purple">Trace with linked runs</div><div class="down">↓</div><div class="branch"><div class="node">Debugging<small>Inputs, outputs, errors</small></div><div class="node">Evaluation<small>Scores and feedback</small></div></div>
+ </div></div>
+ <table><tr><th>Term</th><th>Meaning</th></tr><tr><td>Trace</td><td>End-to-end execution record.</td></tr><tr><td>Run</td><td>Individual model, tool or chain execution.</td></tr><tr><td>Dataset</td><td>Test cases used for evaluation.</td></tr><tr><td>Evaluator</td><td>Assesses output quality against criteria.</td></tr><tr><td>Feedback</td><td>Human or automated assessment.</td></tr></table>
+ <div class="qa"><div class="q">Q: LangChain vs LangSmith?</div><div class="a">LangChain helps build LLM applications. LangSmith helps trace, debug, monitor and evaluate them. They are complementary.</div></div>
+</section>
+
+<section class="section topic" id="multiagent">
+ <div class="section-head"><div class="num">18</div><div><div class="kicker">Specialized collaboration</div><h2>Multi-Agent Architecture</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> A multi-agent architecture divides a complex task among specialized agents coordinated by a supervisor or orchestrator.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">User request</div><div class="down">↓</div><div class="node purple">Supervisor / Orchestrator</div><div class="down">↓</div>
+  <div class="branch"><div class="node">Research agent<small>RAG and web</small></div><div class="node">Execution agent<small>APIs and calculations</small></div></div>
+  <div class="down">↓</div><div class="node">Reviewer / evaluator</div><div class="down">↓</div><div class="node success">Supervisor creates final answer</div>
+ </div></div>
+ <table><tr><th>Agent</th><th>Responsibility</th></tr><tr><td>Supervisor</td><td>Breaks down and allocates work.</td></tr><tr><td>Researcher</td><td>Retrieves internal and external information.</td></tr><tr><td>Executor</td><td>Calls approved APIs and tools.</td></tr><tr><td>Reviewer</td><td>Checks completeness and evidence.</td></tr><tr><td>Response agent</td><td>Prepares the final response.</td></tr></table>
+ <div class="qa"><div class="q">Q: Do multi-agent systems require different LLMs?</div><div class="a">No. Multiple agents can use the same model with different roles and permissions. Different models may be chosen based on reasoning needs, latency and cost.</div></div>
+ <p><b>Design caution:</b> More agents can increase latency, cost and coordination complexity. Use multiple agents only when task separation provides measurable value.</p>
+</section>
+
+<section class="section topic" id="guardrails">
+ <div class="section-head"><div class="num">19</div><div><div class="kicker">Safety & governance</div><h2>Guardrails</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Guardrails are controls that enforce security, safety, validation and execution policies around an LLM application. They should be implemented in application logic and infrastructure, not only in prompts.</div>
+ <div class="grid"><div class="mini blue"><h4>Input validation</h4><p>Reject empty, malformed or oversized requests.</p></div><div class="mini violet"><h4>Prompt-injection defense</h4><p>Treat retrieved content as untrusted data; enforce instruction hierarchy.</p></div><div class="mini green"><h4>Output validation</h4><p>Validate schemas, content and allowed formats.</p></div><div class="mini amber"><h4>PII protection</h4><p>Detect, mask or restrict sensitive information.</p></div><div class="mini blue"><h4>Tool permissions</h4><p>Allowlist tools and validate arguments.</p></div><div class="mini green"><h4>Human approval</h4><p>Require confirmation for sensitive or irreversible actions.</p></div></div>
+ <div class="qa"><div class="q">Q: Why is a system prompt not enough?</div><div class="a">A prompt is an instruction to the model, not an enforcement boundary. Critical controls require authentication, authorization, validation, isolation and application-level policy checks.</div></div>
+</section>
+
+<section class="section topic" id="evals">
+ <div class="section-head"><div class="num">20</div><div><div class="kicker">Quality measurement</div><h2>Evals – LLM Evaluation</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> Evals are systematic methods for measuring the quality, reliability and performance of LLM applications using test cases, metrics and human or automated judgments.</div>
+ <table><tr><th>Metric</th><th>What it measures</th></tr><tr><td>Answer accuracy</td><td>Whether the answer is correct against a reference.</td></tr><tr><td>Faithfulness</td><td>Whether claims are supported by retrieved context.</td></tr><tr><td>Answer relevance</td><td>Whether the response addresses the question.</td></tr><tr><td>Context precision</td><td>How much retrieved context is relevant.</td></tr><tr><td>Context recall</td><td>Whether the retrieval found the necessary evidence.</td></tr><tr><td>Latency</td><td>Time to complete a request.</td></tr><tr><td>Cost</td><td>Model, retrieval and infrastructure cost.</td></tr></table>
+ <h3>RAG evaluation process</h3><div class="diagram"><div class="flow"><div class="node">Test dataset</div><div class="arrow">→</div><div class="node primary">Run RAG pipeline</div><div class="arrow">→</div><div class="node purple">Evaluate retrieval + answer</div><div class="arrow">→</div><div class="node success">Report / improve</div></div></div>
+ <p><b>Tools:</b> Ragas, DeepEval, LangSmith evaluation and OpenAI Evals.</p>
+ <div class="qa"><div class="q">Q: How do you evaluate a RAG system?</div><div class="a">Build representative test questions with expected answers and source evidence. Measure retrieval precision and recall, answer relevance, faithfulness, latency and cost. Include human review for high-impact use cases.</div></div>
+</section>
+
+<section class="section topic" id="multi-llm">
+ <div class="section-head"><div class="num">21</div><div><div class="kicker">Model orchestration</div><h2>Multi-LLM Architecture</h2></div></div>
+ <div class="definition"><b>Interview answer:</b> A multi-LLM architecture uses multiple model calls or models with distinct responsibilities, such as task routing, research, generation and evaluation.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">User request</div><div class="down">↓</div><div class="node purple">LLM 1 – Supervisor<small>Task understanding and allocation</small></div><div class="down">↓</div>
+  <div class="branch"><div class="node">LLM / Agent – Research<small>RAG and web</small></div><div class="node">LLM / Agent – Execution<small>Tools and APIs</small></div></div>
+  <div class="down">↓</div><div class="node">LLM 2 – Evaluator<small>Independent quality review</small></div><div class="down">↓</div><div class="node success">Supervisor returns final answer</div>
+ </div></div>
+ <div class="qa"><div class="q">Q: Why use one model for routing and another for evaluation?</div><div class="a">Separating responsibilities can improve control and create an independent review stage. A smaller model may handle simple routing, while a stronger model evaluates complex evidence. It adds cost and latency, so measure the benefit.</div></div>
+ <div class="qa"><div class="q">Q: Does a separate evaluator guarantee correctness?</div><div class="a">No. Evaluators can make mistakes. Use explicit criteria, source evidence, deterministic checks where possible, representative datasets and human review for critical decisions.</div></div>
+</section>
+
+<section class="section topic" id="comparison">
+ <div class="section-head"><div class="num">22</div><div><div class="kicker">Know the boundaries</div><h2>LangChain vs LangGraph vs LangSmith vs MCP</h2></div></div>
+ <table><tr><th>Technology</th><th>Primary purpose</th><th>Think of it as</th></tr><tr><td><b>LangChain</b></td><td>Build LLM application components and integrations.</td><td>Application toolkit.</td></tr><tr><td><b>LangGraph</b></td><td>Orchestrate stateful, branching agent workflows.</td><td>Workflow engine.</td></tr><tr><td><b>LangSmith</b></td><td>Trace, debug and evaluate LLM applications.</td><td>Observability and evaluation platform.</td></tr><tr><td><b>MCP</b></td><td>Standardize connection to external tools and data.</td><td>Integration protocol.</td></tr></table>
+ <div class="callout"><h3>Interview-ready summary</h3><p>LangChain helps connect LLM application components. LangGraph manages complex stateful agent workflows. LangSmith provides tracing and evaluation. MCP standardizes how AI applications connect to external capabilities. They complement one another rather than directly replacing one another.</p></div>
+</section>
+
+<section class="section topic" id="enterprise">
+ <div class="section-head"><div class="num">23</div><div><div class="kicker">Solution architecture</div><h2>Enterprise Agentic RAG Architecture</h2></div></div>
+ <div class="definition"><b>Scenario:</b> Design an enterprise assistant that reads internal documents, searches the web, performs calculations, accesses approved business systems and generates verified answers.</div>
+ <div class="diagram"><div class="stack">
+  <div class="node primary">User / Enterprise UI</div><div class="down">↓</div>
+  <div class="node">Identity, access control and input guardrails</div><div class="down">↓</div>
+  <div class="node purple">Supervisor / LangGraph orchestration</div><div class="down">↓</div>
+  <div class="branch"><div class="node">Internal RAG<small>Embedding + Pinecone</small></div><div class="node">External research<small>Tavily search</small></div></div>
+  <div class="branch"><div class="node">Enterprise tools<small>MCP integrations</small></div><div class="node">Business APIs<small>Approved actions</small></div></div>
+  <div class="down">↓</div>
+  <div class="node">Top-K retrieval + hybrid search + reranking</div><div class="down">↓</div>
+  <div class="node purple">LLM generation with grounded context</div><div class="down">↓</div>
+  <div class="node">Evaluator + output guardrails + human approval</div><div class="down">↓</div>
+  <div class="node success">Final answer with evidence and sources</div>
+  <p style="font-size:12px;color:#64748b">Cross-cutting: LangSmith tracing, Evals, monitoring, audit logs, cost and latency controls.</p>
+ </div></div>
+ <h3>How to answer this architecture question</h3>
+ <ol><li><b>Ingestion:</b> Extract text from PDFs and business documents, preserve structure and metadata, and process documents asynchronously.</li><li><b>Indexing:</b> Chunk documents, generate embeddings in batches and store vectors with metadata in a vector database.</li><li><b>Security:</b> Authenticate users and enforce document-level permissions during retrieval.</li><li><b>Retrieval:</b> Apply metadata filtering, hybrid search, Top-K retrieval and reranking.</li><li><b>Orchestration:</b> Use a supervisor and graph workflow when the task requires multiple steps or tools.</li><li><b>Generation:</b> Pass only relevant context to the LLM and request evidence-backed responses.</li><li><b>Tools:</b> Connect approved enterprise capabilities through APIs or MCP.</li><li><b>Quality:</b> Evaluate retrieval and answer quality, and use human review for high-impact actions.</li><li><b>Operations:</b> Trace latency, errors, token use, cost and user feedback.</li></ol>
+ <div class="qa"><div class="q">Q: How would you support 100,000 documents and a five-second response target?</div><div class="a">Separate offline ingestion from online query processing. Use batch and parallel ingestion, suitable indexing, metadata filters, efficient Top-K retrieval, reranking only where justified, caching, asynchronous I/O and model selection. Load-test the full path. Five seconds is a service-level target to validate, not a guarantee; network, retrieval, reranking and generation latency all contribute.</div></div>
+</section>
+
+<section class="section" id="checklist">
+ <div class="section-head"><div class="num">✓</div><div><div class="kicker">Final revision</div><h2>Interview Readiness Checklist</h2></div></div>
+ <p class="lead">Tick each topic when you can define it, draw its workflow, explain a trade-off and give an enterprise example.</p>
+ <div class="checklist" id="checklistItems">
+ <label><input type="checkbox"> LLM, Transformer, tokens and context window</label>
+ <label><input type="checkbox"> Temperature, embeddings and similarity</label>
+ <label><input type="checkbox"> RAG architecture and ingestion pipeline</label>
+ <label><input type="checkbox"> RAG types: naive, advanced, hybrid, graph and agentic</label>
+ <label><input type="checkbox"> Chunking, overlap and metadata</label>
+ <label><input type="checkbox"> Pinecone and vector database concepts</label>
+ <label><input type="checkbox"> Top-K retrieval and reranking</label>
+ <label><input type="checkbox"> Tavily and external web search</label>
+ <label><input type="checkbox"> Tool calling and agent loops</label>
+ <label><input type="checkbox"> MCP host, client, server, tools and resources</label>
+ <label><input type="checkbox"> LangChain components and RAG</label>
+ <label><input type="checkbox"> LangGraph state, nodes, edges and checkpointing</label>
+ <label><input type="checkbox"> LangSmith tracing and evaluation</label>
+ <label><input type="checkbox"> Multi-agent and multi-LLM architecture</label>
+ <label><input type="checkbox"> Guardrails, permissions and prompt injection</label>
+ <label><input type="checkbox"> Evals, faithfulness, precision, recall and latency</label>
+ <label><input type="checkbox"> End-to-end enterprise Agentic RAG architecture</label>
+ </div>
+</section>
+</main>
+</div>
+<footer class="footer"><div class="footer-inner">GenAI & Agentic AI Interview Preparation • Visual learning reference • Review vendor documentation for current APIs, model limits and framework versions.</div></footer>
+<script>
+const search=document.getElementById('search');
+const topics=[...document.querySelectorAll('.topic')];
+search.addEventListener('input',()=>{
+ const q=search.value.toLowerCase().trim();
+ topics.forEach(s=>{s.classList.toggle('hide',q && !s.innerText.toLowerCase().includes(q));});
+});
+</script>
+</body>
+</html>
